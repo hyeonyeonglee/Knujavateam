@@ -48,10 +48,25 @@ public class Model {
 	public String getMapImage() {
 		return naverMaps.map_service(stinLocLon, stinLocLat);
 	}
-	public void setCode(String search) throws Exception {
+	public void setCode() throws Exception {
 		excelData.processExcel(search);
 		this.railCd = excelData.getRailcd();
 		this.lnCd = excelData.getLncd();
 		this.stinCd = excelData.getStincd();
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
+	public String getSearch() {
+		return search;
+	}
+	public String getrailCd() {
+		return railCd.get(0);
+	}
+	public String getlnCd() {
+		return lnCd.get(0);
+	}
+	public String getStinCd() {
+		return stinCd.get(0);
 	}
 }

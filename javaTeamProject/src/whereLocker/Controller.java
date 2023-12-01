@@ -17,8 +17,22 @@ public void setCode(String railcd, String lncd, String stincd) {
 	this.stincd = stincd;
 }
 
-public void setTextArea() throws IOException,ParseException {
-	List<ConnectLocker.ItemData> itemlist = locker.getInfo(locker.loadLock(railcd, lncd, stincd));
+public void handleSearchButtonClick(String searchText) throws Exception {
+	model.setSearch(searchText);
+	model.setCode();
+	setParameter();
+	model.setLoc(railcd,  lncd, stincd, model.getSearch());
+	updateView();
+}
+public void setTextArea(String railcd, String lncd, String stincd) {
+	
+}
+public void setParameter() {
+	railcd = model.getrailCd();
+	lncd = model.getlnCd();
+	stincd = model.getStinCd();
+}
+public void updateView() {
 	
 }
 

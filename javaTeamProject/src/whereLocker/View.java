@@ -18,6 +18,7 @@ import javax.swing.JList;
 
 public class View extends JFrame {
 	Model model = new Model();
+	private Controller controller ;
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -60,7 +61,17 @@ public class View extends JFrame {
 		btnSearch.setFont(new Font("굴림", Font.BOLD, 21));
 		btnSearch.setBounds(351, 10, 91, 41);
 		panel.add(btnSearch);
-		
+		btnSearch.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				String searchText = getSearch();
+				try {
+					controller.handleSearchButtonClick(searchText);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		
 		
 		
@@ -70,5 +81,8 @@ public class View extends JFrame {
 	}
 	public String getSearch() {
 		return txtSearch.getText();
+	}
+	public void setController(Controller controller) {
+		this.controller = controller;
 	}
 }
