@@ -31,6 +31,7 @@ public class View extends JFrame {
 	private JScrollPane scrollPane;
 	private JScrollPane scrollPane_1;
 	private JScrollPane scrollPane_2;
+	private JLabel imageicon;
 	
 
 	
@@ -106,6 +107,11 @@ public class View extends JFrame {
 		textAreaAtm = new JTextArea();
 		scrollPane_2.setViewportView(textAreaAtm);
 		textAreaAtm.setEditable(false);
+		
+		imageicon = new JLabel("지도");
+		imageicon.setFont(new Font("굴림", Font.BOLD, 16));
+		imageicon.setBounds(705, 77, 50, 28);
+		panel.add(imageicon);
 	}
 	public String getSearch() {
 		return txtSearch.getText();

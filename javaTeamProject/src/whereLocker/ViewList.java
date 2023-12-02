@@ -18,6 +18,7 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
+import java.awt.Color;
 
 public class ViewList extends JFrame {
 
@@ -39,7 +40,7 @@ public class ViewList extends JFrame {
 	public ViewList() {
 		model = new Model();
 		listModel = new DefaultListModel<>();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		setBounds(100, 100, 501, 593);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -47,20 +48,21 @@ public class ViewList extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(12, 10, 475, 546);
-		contentPane.add(panel);
-		panel.setLayout(null);
+	
+		
 		
 		stinNmList = new JList<>(listModel);
+		stinNmList.setBackground(new Color(255, 255, 255));
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 10, 475, 546);
 		scrollPane.setViewportView(stinNmList);
 		contentPane.add(scrollPane);
+		scrollPane.revalidate();
+		scrollPane.repaint();
 		
 		stinNmList.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				if(e.getClickCount() == 1) {
+				if(e.getClickCount() == 2) {
 					try {
 						controller.handleListClick(stinNmList.getSelectedIndex());
 						dispose();

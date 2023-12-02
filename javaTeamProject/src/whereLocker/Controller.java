@@ -54,6 +54,11 @@ public void setTextArea() throws IOException, ParseException {
 	view.clearTextArea(view.textAreaAtm);
 	
 	List<ConnectLocker.ItemData> lockerData =model.getLock(railcd,lncd,stincd);
+	if(lockerData.size()== 0) {
+		String lockerInfo ="물품보관함 없음";
+		view.setTextArea(view.textAreaLocker, lockerInfo);
+	}
+	else {
     for (ConnectLocker.ItemData itemData : lockerData) {
         // Customize how you want to display the data in the JTextArea
         String lockerInfo = itemData.num+"\n"
@@ -63,7 +68,13 @@ public void setTextArea() throws IOException, ParseException {
 
         view.setTextArea(view.textAreaLocker, lockerInfo);
     }
+	}
     List<ConnectToil.ItemData>  toilData = model.getToil(railcd, lncd, stincd);
+    if(toilData.size()==0) {
+		String lockerInfo ="화장실 없음";
+		view.setTextArea(view.textAreaToil, lockerInfo);
+	}
+    else {
     for (ConnectToil.ItemData itemData : toilData) {
         // Customize how you want to display the data in the JTextArea
         String lockerInfo = itemData.num+"\n"
@@ -73,7 +84,13 @@ public void setTextArea() throws IOException, ParseException {
 
         view.setTextArea(view.textAreaToil, lockerInfo);
     }
+    }
     List<ConnectAtm.ItemData>  atmData = model.getAtm(railcd, lncd, stincd);
+    if(atmData.size()==0) {
+		String lockerInfo ="Atm기기 없음";
+		view.setTextArea(view.textAreaAtm, lockerInfo);
+	}
+    else {
     for (ConnectAtm.ItemData itemData : atmData) {
         // Customize how you want to display the data in the JTextArea
         String lockerInfo = itemData.num+"\n"
@@ -82,6 +99,7 @@ public void setTextArea() throws IOException, ParseException {
                 + "지상구분: " + itemData.grndDvNm + "\n\n";
 
         view.setTextArea(view.textAreaAtm, lockerInfo);
+    }
     }
 }
 
