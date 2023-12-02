@@ -35,6 +35,7 @@ public void handleSearchButtonClick(String searchText) throws Exception {
 public void handleListClick(int index) throws IOException, ParseException {
 	setParameter(index);
 	model.setLoc(railcd, lncd, stincd, model.getStinNm(index));
+	model.map_geocode(model.getAddr());
 	setTextArea();
 	showMaps();
 	test();

@@ -43,12 +43,14 @@ public class Model {
 	}
 	public void setLoc(String railcd, String lncd, String stincd,String stinNm) throws IOException, ParseException {
 		List<ConnectStation.ItemData> itemDataList = connectStation.loadStation(railcd,lncd,stincd,stinNm);
+		
 		for(ConnectStation.ItemData itemData : itemDataList) {
 			System.out.println("setLoc complite:"+"\n"+
 					"on:"+this.stinLocLon+"\n"+"at: "+this.stinLocLat);
 			this.stinLocLon = itemData.stinLocLon;
 			this.stinLocLat = itemData.stinLocLat;
 		}
+		
 		
 	}
 	public String getMapImage() {
@@ -93,5 +95,15 @@ public class Model {
 	public String getat() {
 		return stinLocLat;
 	}
+	public String getAddr() {
+		return connectStation.getAddr();
+	}
+	public void map_geocode(String addr) {
+		naverMaps.map_geocode(addr);
+		this.stinLocLat = naverMaps.getY();
+		this.stinLocLon = naverMaps.getX();
+	}
+	
+	
 	
 }

@@ -15,6 +15,7 @@ import org.json.simple.parser.ParseException;
 
 
 public class ConnectStation {
+	private String roadAddr;
 	class ItemData{
 		String stinLocLon;
 		String stinLocLat;
@@ -66,20 +67,25 @@ public class ConnectStation {
 	    	  System.out.println("화장실 없음");
 	      }
 	      else {
-	      for(int i=0; i<array.size(); i++){
+	      
 	        	 
 	    	    
 	    	             
 	    	
-	      JSONObject object = (JSONObject) array.get(i);
+	      JSONObject object = (JSONObject) array.get(0);
 	      String stinLocLon = String.valueOf(object.get("stinLocLon"));
 	      String stinLocLat = String.valueOf(object.get("stinLocLat"));
+	      roadAddr = (String)object.get("lonmAdr");
 	      ItemData itemData = new ItemData(stinLocLon,stinLocLat);
 	      itemDataList.add(itemData);
+	      System.out.println(roadAddr);
 	     
-	      }
+	      
 	      }
 	      return itemDataList;
+	}
+	public String getAddr() {
+		return roadAddr;
 	}
 	
 	      
