@@ -14,7 +14,7 @@ public class Model {
 	private NaverMaps naverMaps;
 	private ExcelData excelData;
 	private String search;
-	private double stinLocLon, stinLocLat;
+	private String stinLocLon, stinLocLat;
 	private ArrayList<String> railCd;
     private ArrayList<String> lnCd;
     private ArrayList<String> stinCd;
@@ -44,9 +44,12 @@ public class Model {
 	public void setLoc(String railcd, String lncd, String stincd,String stinNm) throws IOException, ParseException {
 		List<ConnectStation.ItemData> itemDataList = connectStation.loadStation(railcd,lncd,stincd,stinNm);
 		for(ConnectStation.ItemData itemData : itemDataList) {
+			System.out.println("setLoc complite:"+"\n"+
+					"on:"+this.stinLocLon+"\n"+"at: "+this.stinLocLat);
 			this.stinLocLon = itemData.stinLocLon;
 			this.stinLocLat = itemData.stinLocLat;
 		}
+		
 	}
 	public String getMapImage() {
 		return naverMaps.map_service(stinLocLon, stinLocLat);
@@ -80,9 +83,15 @@ public class Model {
 	}
 	public ArrayList<String> getLnNm() {
 		return lnNm;
-	}
+	}	
 	public ArrayList<String> getStinNm(){
 		return stinNm;
+	}
+	public String geton() {
+		return stinLocLon;
+	}
+	public String getat() {
+		return stinLocLat;
 	}
 	
 }

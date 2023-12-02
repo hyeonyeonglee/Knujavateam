@@ -20,28 +20,18 @@ import org.json.simple.parser.ParseException;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.JLabel;
-class MapFrame{
-	JLabel imageLabel;
-	public void initGUI() {
-		JFrame frm = new JFrame("Map View");                    // 프레임 생성
-		frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     // 프레임의 X 클릭 시 종료.
-		imageLabel = new JLabel("지도");
-		Container c = frm.getContentPane();  
-		c.add(BorderLayout.CENTER, imageLabel);
-		frm.setSize(730, 660);
-		frm.setVisible(true);
-		
-	}
+
 	
-}
+
 public class NaverMaps {
 	
-	public String map_service(double x, double y) {
+	public String map_service(String x, String y) {
 		String URL_STATICMAP = "https://naveropenapi.apigw.ntruss.com/map-static/v2/raster?";
 		try {
 			String pos = URLEncoder.encode(x + " " + y, "UTF-8");
 			URL_STATICMAP += "center=" + x + "," + y;
-			URL_STATICMAP += "&level=15&w=320&h=320&scale=2";
+			URL_STATICMAP += "&level=15&w=320&h=320&scale=1";
+			URL_STATICMAP += "&markers=type:d|size:mid|pos:" + pos;
 			
 			URL url = new URL(URL_STATICMAP);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -82,11 +72,6 @@ public class NaverMaps {
 		    }
 		return null;
 		}
-	public static void main(String args[]) {
-		MapFrame mapFrame = new MapFrame();
-		mapFrame.initGUI();
-		NaverMaps naverMaps = new NaverMaps();
-        naverMaps.map_service();
-	}
+	
 	}
 

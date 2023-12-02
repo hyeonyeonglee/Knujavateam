@@ -1,10 +1,10 @@
 package whereLocker;
 
-import java.awt.EventQueue;
+
 
 public class Main {
     public static void main(String[] args) {
-        EventQueue.invokeLater(() -> {
+        
             try {
                 Model model = new Model();
                 View view = new View();
@@ -18,6 +18,6 @@ public class Main {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        });
-    }
+        }
+    
 }

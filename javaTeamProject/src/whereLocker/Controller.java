@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.ImageIcon;
+
 import org.json.simple.parser.ParseException;
 
 public class Controller  {
@@ -34,6 +36,7 @@ public void handleListClick(int index) throws IOException, ParseException {
 	setParameter(index);
 	model.setLoc(railcd, lncd, stincd, model.getStinNm(index));
 	setTextArea();
+	showMaps();
 	test();
 }
 
@@ -44,11 +47,13 @@ public void setParameter(int index) {
 	stincd = model.getStinCd(index);
 	
 }
-public void updateView() {
-	
+public void showMaps() {
+	String path = model.getMapImage();
+	ImageIcon img = new ImageIcon(path);
+	view.setIcon(img);
 }
 public void setTextArea() throws IOException, ParseException {
-     // Clear previous content
+     
 	view.clearTextArea(view.textAreaLocker);
 	view.clearTextArea(view.textAreaToil);
 	view.clearTextArea(view.textAreaAtm);
@@ -76,7 +81,7 @@ public void setTextArea() throws IOException, ParseException {
 	}
     else {
     for (ConnectToil.ItemData itemData : toilData) {
-        // Customize how you want to display the data in the JTextArea
+        
         String lockerInfo = itemData.num+"\n"
         		+"상세위치: " + itemData.dtloc + "\n"
                 + "개찰구내외구분: " + itemData.gateInotDvNm + "\n"
@@ -114,6 +119,8 @@ public void test() {
 	System.out.println("railcd:"+railcd+"\n"+
 "lncd: "+lncd+"\n"
 +"stincd: "+stincd+"\n"
-+"search:"+model.getSearch());
++"search:"+model.getSearch()
++"경도: "+model.geton()
++"위도: "+model.getat());
 }
 }

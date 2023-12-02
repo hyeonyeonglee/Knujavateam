@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import java.awt.Color;
@@ -32,6 +33,10 @@ public class View extends JFrame {
 	private JScrollPane scrollPane_1;
 	private JScrollPane scrollPane_2;
 	private JLabel imageicon;
+	private JLabel label2;
+	private JLabel label3;
+	private JLabel label4;
+	private JLabel label5;
 	
 
 	
@@ -60,10 +65,10 @@ public class View extends JFrame {
 		panel.add(txtSearch);
 		txtSearch.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("역 검색");
-		lblNewLabel.setBounds(12, 10, 84, 41);
-		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 21));
-		panel.add(lblNewLabel);
+		JLabel label1 = new JLabel("역 검색");
+		label1.setBounds(12, 10, 84, 41);
+		label1.setFont(new Font("굴림", Font.BOLD, 21));
+		panel.add(label1);
 		
 		JButton btnSearch = new JButton("검색");
 		btnSearch.setBounds(351, 10, 91, 41);
@@ -108,10 +113,27 @@ public class View extends JFrame {
 		scrollPane_2.setViewportView(textAreaAtm);
 		textAreaAtm.setEditable(false);
 		
-		imageicon = new JLabel("지도");
+		imageicon = new JLabel("");
+		imageicon.setBounds(500, 100, 320, 320);
 		imageicon.setFont(new Font("굴림", Font.BOLD, 16));
-		imageicon.setBounds(705, 77, 50, 28);
 		panel.add(imageicon);
+		
+		label2 = new JLabel(" 지도");
+		label2.setFont(new Font("굴림", Font.BOLD, 16));
+		label2.setBounds(636, 43, 84, 32);
+		panel.add(label2);
+		
+		label3 = new JLabel("물품보관함 정보");
+		label3.setBounds(12, 69, 91, 24);
+		panel.add(label3);
+		
+		label4 = new JLabel("화장실 정보");
+		label4.setBounds(12, 217, 84, 24);
+		panel.add(label4);
+		
+		label5 = new JLabel("ATM 정보");
+		label5.setBounds(12, 365, 84, 24);
+		panel.add(label5);
 	}
 	public String getSearch() {
 		return txtSearch.getText();
@@ -125,7 +147,9 @@ public class View extends JFrame {
 	public void clearTextArea(JTextArea area) {
 		area.setText("");
 	}
-	
+	public void setIcon(ImageIcon image) {
+		imageicon.setIcon(image);
+	}
 
 }
 

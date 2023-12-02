@@ -16,16 +16,16 @@ import org.json.simple.parser.ParseException;
 
 public class ConnectStation {
 	class ItemData{
-		double stinLocLon;
-		double stinLocLat;
-		public ItemData(double stinLocLon, double stinLocLat) {
+		String stinLocLon;
+		String stinLocLat;
+		public ItemData(String stinLocLon, String stinLocLat) {
 			this.stinLocLat = stinLocLat;
 			this.stinLocLon = stinLocLon;
 		}
 }
 
 	public List<ItemData> loadStation(String railCd, String lnCd, String stinCd, String stinNm)throws IOException, ParseException{
-		 StringBuilder urlBuilder = new StringBuilder("https://openapi.kric.go.kr/openapi/convenientInfo/stationInfo?");
+		 StringBuilder urlBuilder = new StringBuilder("https://openapi.kric.go.kr/openapi/convenientInfo/stationInfo");
 		 urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=$2a$10$BZRlkGiNJl1q//99Q6B5B.rkjevl6cCQJsTj7KVB1KH9wskgWZ51m"); /*Service Key*/
 	        urlBuilder.append("&" + URLEncoder.encode("format","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));  
 	        urlBuilder.append("&" + URLEncoder.encode("railOprIsttCd","UTF-8") + "=" + URLEncoder.encode(railCd, "UTF-8")); 
@@ -72,13 +72,15 @@ public class ConnectStation {
 	    	             
 	    	
 	      JSONObject object = (JSONObject) array.get(i);
-	      double stinLocLon = (double)object.get("stinLocLon");
-	      double stinLocLat = (double)object.get("stinLocLat");
+	      String stinLocLon = String.valueOf(object.get("stinLocLon"));
+	      String stinLocLat = String.valueOf(object.get("stinLocLat"));
 	      ItemData itemData = new ItemData(stinLocLon,stinLocLat);
 	      itemDataList.add(itemData);
+	     
 	      }
 	      }
 	      return itemDataList;
 	}
+	
 	      
 }

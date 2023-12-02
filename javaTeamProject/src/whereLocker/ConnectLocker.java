@@ -76,7 +76,14 @@ public class ConnectLocker {
 	      JSONObject object = (JSONObject) array.get(i);
 	      String num = "물품보관함"+(i+1);
 	      String dtloc = (String)object.get("dtlLoc");
-	      String utlFare = (String)object.get("utlFare");
+	      
+	      String utlFare = String.valueOf(object.get("utlFare"));
+	      if(utlFare == "null") {
+	    	  utlFare = "지원안함";
+	      }
+	      else {
+	    	  utlFare+="원";
+	      }
 	      String grndDvnm = (String)object.get("grndDvNm");
 	      ItemData itemData = new ItemData(num,dtloc,utlFare, grndDvnm);
 	      itemDataList.add(itemData);
