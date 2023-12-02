@@ -66,13 +66,23 @@ public class Model {
 	public String getSearch() {
 		return search;
 	}
-	public String getrailCd() {
-		return railCd.get(0);
+	public String getrailCd(int index) {
+		return railCd.get(index);
 	}
-	public String getlnCd() {
-		return lnCd.get(0);
+	public String getlnCd(int index) {
+		return lnCd.get(index);
 	}
-	public String getStinCd() {
-		return stinCd.get(0);
+	public String getStinCd(int index) {
+		return stinCd.get(index);
 	}
+	public String getStinNm(int index) {
+		return stinNm.get(index);
+	}
+	public ArrayList<String> getLnNm() {
+		return lnNm;
+	}
+	public ArrayList<String> getStinNm(){
+		return stinNm;
+	}
+	
 }

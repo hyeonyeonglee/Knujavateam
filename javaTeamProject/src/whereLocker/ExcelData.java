@@ -66,9 +66,9 @@ public class ExcelData {
             lncd.add(foundCell.getStringValue());
             foundCell = cells.get(row, 4);
             stincd.add(foundCell.getStringValue());
-            foundCell = cells.get(row, 5);
+            foundCell = cells.get(row,5 );
             stinNm.add(foundCell.getStringValue());
-            foundCell = cells.get(row,4);
+            foundCell = cells.get(row,3);
             lnNm.add(foundCell.getStringValue());
         }
         
@@ -89,11 +89,15 @@ public class ExcelData {
         ArrayList<String> railcdResult = excelData.getRailcd();
         ArrayList<String> lncdResult = excelData.getLncd();
         ArrayList<String> stincdResult = excelData.getStincd();
+        ArrayList<String> lnNmResult = excelData.getLnNm();
+        ArrayList<String> stinNmResult = excelData.getStinNm();
         //여기까지 필수 나머지 위로 아래로 다 삭제가능
         
         // 결과 값출력 삭제해서 사용할것
-        System.out.println("Railcd Result: " + railcdResult);
-        System.out.println("Lncd Result: " + lncdResult);
-        System.out.println("Stincd Result: " + stincdResult);
+        System.out.println("Railcd Result: " + railcdResult+railcdResult.size());
+        System.out.println("Lncd Result: " + lncdResult+lncdResult.size());
+        System.out.println("Stincd Result: " + stincdResult+stincdResult.size());
+        System.out.println("LnNm result: "+ lnNmResult+lnNmResult.size());
+        System.out.println("StinNm result: "+ stinNmResult+stinNmResult.size());
     }
 }

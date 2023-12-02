@@ -46,28 +46,28 @@ public class View extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 920, 557);
 		panel.setBackground(new Color(192, 192, 192));
 		panel.setForeground(new Color(0, 0, 0));
-		panel.setBounds(0, 0, 920, 557);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		txtSearch = new JTextField();
+		txtSearch.setBounds(121, 10, 214, 41);
 		txtSearch.setFont(new Font("굴림", Font.PLAIN, 21));
 		txtSearch.setText("ex) 천안");
-		txtSearch.setBounds(121, 10, 214, 41);
 		panel.add(txtSearch);
 		txtSearch.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("역 검색");
-		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 21));
 		lblNewLabel.setBounds(12, 10, 84, 41);
+		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 21));
 		panel.add(lblNewLabel);
 		
 		JButton btnSearch = new JButton("검색");
+		btnSearch.setBounds(351, 10, 91, 41);
 		btnSearch.setToolTipText("");
 		btnSearch.setFont(new Font("굴림", Font.BOLD, 21));
-		btnSearch.setBounds(351, 10, 91, 41);
 		panel.add(btnSearch);
 		btnSearch.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
