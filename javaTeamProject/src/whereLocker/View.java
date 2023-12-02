@@ -41,12 +41,16 @@ public class View extends JFrame {
 
 	
 	public View() {
+		setTitle("WhereLocker");
 		setBackground(new Color(255, 255, 255));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 934, 594);
 		contentPane = new JPanel();
 		contentPane.setForeground(new Color(0, 0, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		
+		ImageIcon programIcon = new ImageIcon("C:\\Users\\gusdu\\eclipse-workspace\\javaTeamProject\\Icon.png");
+		setIconImage(programIcon.getImage());
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -124,15 +128,18 @@ public class View extends JFrame {
 		panel.add(label2);
 		
 		label3 = new JLabel("물품보관함 정보");
-		label3.setBounds(12, 69, 91, 24);
+		label3.setFont(new Font("굴림", Font.PLAIN, 14));
+		label3.setBounds(12, 69, 152, 24);
 		panel.add(label3);
 		
 		label4 = new JLabel("화장실 정보");
-		label4.setBounds(12, 217, 84, 24);
+		label4.setFont(new Font("굴림", Font.PLAIN, 16));
+		label4.setBounds(12, 217, 152, 24);
 		panel.add(label4);
 		
 		label5 = new JLabel("ATM 정보");
-		label5.setBounds(12, 365, 84, 24);
+		label5.setFont(new Font("굴림", Font.PLAIN, 16));
+		label5.setBounds(12, 365, 198, 24);
 		panel.add(label5);
 	}
 	public String getSearch() {

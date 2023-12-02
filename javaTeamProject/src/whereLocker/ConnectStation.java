@@ -16,16 +16,10 @@ import org.json.simple.parser.ParseException;
 
 public class ConnectStation {
 	private String roadAddr;
-	class ItemData{
-		String stinLocLon;
-		String stinLocLat;
-		public ItemData(String stinLocLon, String stinLocLat) {
-			this.stinLocLat = stinLocLat;
-			this.stinLocLon = stinLocLon;
-		}
-}
+	
 
-	public List<ItemData> loadStation(String railCd, String lnCd, String stinCd, String stinNm)throws IOException, ParseException{
+
+	public void loadStation(String railCd, String lnCd, String stinCd, String stinNm)throws IOException, ParseException{
 		 StringBuilder urlBuilder = new StringBuilder("https://openapi.kric.go.kr/openapi/convenientInfo/stationInfo");
 		 urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=$2a$10$BZRlkGiNJl1q//99Q6B5B.rkjevl6cCQJsTj7KVB1KH9wskgWZ51m"); /*Service Key*/
 	        urlBuilder.append("&" + URLEncoder.encode("format","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));  
@@ -62,9 +56,9 @@ public class ConnectStation {
 	     //**         
 	      //배열 추출
 	      JSONArray array = (JSONArray) jsonObject.get("body");
-	      List<ItemData> itemDataList = new ArrayList();
+	      
 	      if(array == null) {
-	    	  System.out.println("화장실 없음");
+	    	  System.out.println("주소없음");
 	      }
 	      else {
 	      
@@ -73,22 +67,19 @@ public class ConnectStation {
 	    	             
 	    	
 	      JSONObject object = (JSONObject) array.get(i);
-	      String stinLocLon = String.valueOf(object.get("stinLocLon"));
-	      String stinLocLat = String.valueOf(object.get("stinLocLat"));
 	      String name = (String)object.get("stinNm");
 	      System.out.println("name="+name);
 	      System.out.println("stinNm="+stinNm);
 	      roadAddr = (String)object.get("lonmAdr");
-	      ItemData itemData = new ItemData(stinLocLon,stinLocLat);
-	      itemDataList.add(itemData);
+	     
 	      System.out.println(roadAddr);
 	      if(name.equals(stinNm)) {
 	    	  System.out.println(name+"=="+stinNm);
-	     break;
+	    	  break;
 	       }
 	      }
-	      }
-	      return itemDataList;
+	     }
+	      
 	}
 	public String getAddr() {
 		return roadAddr;
