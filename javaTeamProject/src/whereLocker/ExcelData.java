@@ -9,11 +9,15 @@ public class ExcelData {
     private ArrayList<String> railcd;
     private ArrayList<String> lncd;
     private ArrayList<String> stincd;
+    private ArrayList<String> stinNm;
+    private ArrayList<String> lnNm;
 
     public ExcelData() {
         railcd = new ArrayList<>();
         lncd = new ArrayList<>();
         stincd = new ArrayList<>();
+        stinNm = new ArrayList<>();
+        lnNm = new ArrayList<>();
     }
 
     public ArrayList<String> getRailcd() {
@@ -27,18 +31,31 @@ public class ExcelData {
     public ArrayList<String> getStincd() {
         return stincd;
     }
+    public ArrayList<String> getStinNm(){
+    	return stinNm;
+    }
+    public ArrayList<String> getLnNm(){
+    	return lnNm;
+    }
 
     public void processExcel(String searchString) throws Exception {
+    	   railcd.clear();
+    	    lncd.clear();
+    	    stincd.clear();
+    	    stinNm.clear();
+    	    lnNm.clear();
         ArrayList<Integer> cellrow = new ArrayList<>();
         Workbook workbook = new Workbook("C:\\Users\\gusdu\\eclipse-workspace\\javaTeamProject\\운영기관_역사_코드정보_2023.09.26.xlsx");  //엑셀위치에 따라 수정
         Worksheet worksheet = workbook.getWorksheets().get(0);
         Cells cells = worksheet.getCells();
         FindOptions findOptions = new FindOptions();
-        findOptions.setLookAtType(LookAtType.ENTIRE_CONTENT);
+        findOptions.setLookAtType(LookAtType.CONTAINS);
 
         Cell cell = cells.find(searchString, null, findOptions);
         while (cell != null) {
-            cellrow.add(cell.getRow());
+        	if(cell.getColumn()==5){
+        		cellrow.add(cell.getRow());
+        	}
             cell = cells.find(searchString, cell, findOptions);
         }
         for (int i = 0; i < cellrow.size(); i++) {
@@ -49,6 +66,10 @@ public class ExcelData {
             lncd.add(foundCell.getStringValue());
             foundCell = cells.get(row, 4);
             stincd.add(foundCell.getStringValue());
+            foundCell = cells.get(row, 5);
+            stinNm.add(foundCell.getStringValue());
+            foundCell = cells.get(row,4);
+            lnNm.add(foundCell.getStringValue());
         }
         
     }

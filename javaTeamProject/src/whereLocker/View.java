@@ -10,11 +10,13 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import java.awt.Color;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
 
 public class View extends JFrame {
 	Model model = new Model();
@@ -23,7 +25,13 @@ public class View extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtSearch;
-	JTextArea textArea;
+	JTextArea textAreaLocker;
+	JTextArea textAreaToil;
+	JTextArea textAreaAtm;
+	private JScrollPane scrollPane;
+	private JScrollPane scrollPane_1;
+	private JScrollPane scrollPane_2;
+	
 
 	
 	public View() {
@@ -73,11 +81,31 @@ public class View extends JFrame {
 			}
 		});
 		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(12, 90, 430, 117);
+		panel.add(scrollPane);
 		
 		
-		textArea = new JTextArea();
-		textArea.setBounds(12, 71, 430, 435);
-		panel.add(textArea);
+		
+		textAreaLocker = new JTextArea();
+		scrollPane.setViewportView(textAreaLocker);
+		textAreaLocker.setEditable(false);
+		
+		scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(12, 238, 430, 117);
+		panel.add(scrollPane_1);
+		
+		textAreaToil = new JTextArea();
+		scrollPane_1.setViewportView(textAreaToil);
+		textAreaToil.setEditable(false);
+		
+		scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(12, 391, 430, 117);
+		panel.add(scrollPane_2);
+		
+		textAreaAtm = new JTextArea();
+		scrollPane_2.setViewportView(textAreaAtm);
+		textAreaAtm.setEditable(false);
 	}
 	public String getSearch() {
 		return txtSearch.getText();
@@ -85,4 +113,13 @@ public class View extends JFrame {
 	public void setController(Controller controller) {
 		this.controller = controller;
 	}
+	public void setTextArea(JTextArea area ,String info) {
+	      area.append(info);
+	    }
+	public void clearTextArea(JTextArea area) {
+		area.setText("");
+	}
+	
+
 }
+

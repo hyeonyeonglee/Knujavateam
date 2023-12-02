@@ -63,7 +63,7 @@ public class ConnectAtm {
         JSONArray array = (JSONArray) jsonObject.get("body");
         List<ItemData> itemDataList = new ArrayList();
         if (array == null) {
-            System.out.println("화장실 없음");
+            System.out.println("Atm 없음");
         } else {
             for (int i = 0; i < array.size(); i++) {
                 System.out.println("ATM" + (i + 1) + " ===========================================");
@@ -93,4 +93,4 @@ public class ConnectAtm {
       
       
     
-}
+

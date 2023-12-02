@@ -18,6 +18,8 @@ public class Model {
 	private ArrayList<String> railCd;
     private ArrayList<String> lnCd;
     private ArrayList<String> stinCd;
+    private ArrayList<String> stinNm;
+    private ArrayList<String> lnNm;
 	
 	
 	
@@ -32,6 +34,7 @@ public class Model {
 	public List<ConnectLocker.ItemData> getLock(String railcd, String lncd, String stincd) throws IOException, ParseException {
 		return connectLocker.loadLock(lncd, railcd, stincd);
 	}
+	
 	public List<ConnectAtm.ItemData> getAtm(String railcd, String lncd, String stincd) throws IOException, ParseException {
 		return connectAtm.loadAtmInfo(railcd, lncd, stincd);
 	}
@@ -49,10 +52,13 @@ public class Model {
 		return naverMaps.map_service(stinLocLon, stinLocLat);
 	}
 	public void setCode() throws Exception {
+		System.out.println("setCode method is called");
 		excelData.processExcel(search);
 		this.railCd = excelData.getRailcd();
 		this.lnCd = excelData.getLncd();
 		this.stinCd = excelData.getStincd();
+		this.stinNm = excelData.getStinNm();
+		this.lnNm = excelData.getLnNm();
 	}
 	public void setSearch(String search) {
 		this.search = search;
