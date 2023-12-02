@@ -114,11 +114,11 @@ public class View extends JFrame {
 		textAreaAtm.setEditable(false);
 		
 		imageicon = new JLabel("");
-		imageicon.setBounds(500, 100, 320, 320);
+		imageicon.setBounds(500, 100, 386, 408);
 		imageicon.setFont(new Font("굴림", Font.BOLD, 16));
 		panel.add(imageicon);
 		
-		label2 = new JLabel(" 지도");
+		label2 = new JLabel("      지도");
 		label2.setFont(new Font("굴림", Font.BOLD, 16));
 		label2.setBounds(636, 43, 84, 32);
 		panel.add(label2);

@@ -32,7 +32,7 @@ public class NaverMaps {
 		try {
 			String pos = URLEncoder.encode(x + " " + y, "UTF-8");
 			URL_STATICMAP += "center=" + x + "," + y;
-			URL_STATICMAP += "&level=15&w=320&h=320&scale=1";
+			URL_STATICMAP += "&level=15&w=386&h=408&scale=1";
 			URL_STATICMAP += "&markers=type:d|size:mid|pos:" + pos;
 			
 			URL url = new URL(URL_STATICMAP);

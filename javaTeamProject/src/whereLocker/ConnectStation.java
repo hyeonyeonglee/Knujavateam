@@ -68,19 +68,25 @@ public class ConnectStation {
 	      }
 	      else {
 	      
-	        	 
+	       for(int i =0;i<array.size();i++) {	 
 	    	    
 	    	             
 	    	
-	      JSONObject object = (JSONObject) array.get(0);
+	      JSONObject object = (JSONObject) array.get(i);
 	      String stinLocLon = String.valueOf(object.get("stinLocLon"));
 	      String stinLocLat = String.valueOf(object.get("stinLocLat"));
+	      String name = (String)object.get("stinNm");
+	      System.out.println("name="+name);
+	      System.out.println("stinNm="+stinNm);
 	      roadAddr = (String)object.get("lonmAdr");
 	      ItemData itemData = new ItemData(stinLocLon,stinLocLat);
 	      itemDataList.add(itemData);
 	      System.out.println(roadAddr);
-	     
-	      
+	      if(name.equals(stinNm)) {
+	    	  System.out.println(name+"=="+stinNm);
+	     break;
+	       }
+	      }
 	      }
 	      return itemDataList;
 	}
