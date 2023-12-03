@@ -15,19 +15,19 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class ConnectLocker {
-	class ItemData{
+	class LockerData{
 		String num;
 		String dtloc;
 		String utlFare;
 		String grndDvNm;
-		public ItemData(String num,String dtloc, String utlFare, String grndDvNm) {
+		public LockerData(String num,String dtloc, String utlFare, String grndDvNm) {
 			this.num = num;
 			this.dtloc = dtloc;
 			this.utlFare = utlFare;
 			this.grndDvNm = grndDvNm;
 		}
 	}
-	public List<ItemData> loadLock(String lncd, String railOpr, String stinCd)throws IOException, ParseException {
+	public List<LockerData> loadLock(String lncd, String railOpr, String stinCd)throws IOException, ParseException {
 		 StringBuilder urlBuilder = new StringBuilder("https://openapi.kric.go.kr/openapi/convenientInfo/stationLocker");
 		 urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=$2a$10$BZRlkGiNJl1q//99Q6B5B.rkjevl6cCQJsTj7KVB1KH9wskgWZ51m"); /*Service Key*/
 	        urlBuilder.append("&" + URLEncoder.encode("format","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8")); 
@@ -56,7 +56,7 @@ public class ConnectLocker {
 	
 	
 		JSONParser jsonParser = new JSONParser();
-		List<ItemData> itemDataList = new ArrayList<>();
+		List<LockerData> itemDataList = new ArrayList<>();
 
 	      //JSON데이터를 넣어 JSON Object 로 만들어 준다.
 	      JSONObject jsonObject = (JSONObject)jsonParser.parse(sb.toString());
@@ -85,7 +85,7 @@ public class ConnectLocker {
 	    	  utlFare+="원";
 	      }
 	      String grndDvnm = (String)object.get("grndDvNm");
-	      ItemData itemData = new ItemData(num,dtloc,utlFare, grndDvnm);
+	      LockerData itemData = new LockerData(num,dtloc,utlFare, grndDvnm);
 	      itemDataList.add(itemData);
 	      
 	      }

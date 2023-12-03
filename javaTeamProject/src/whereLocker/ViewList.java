@@ -19,6 +19,7 @@ import java.io.IOException;
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 import java.awt.Color;
+import java.awt.Font;
 
 public class ViewList extends JFrame {
 
@@ -52,6 +53,7 @@ public class ViewList extends JFrame {
 		
 		
 		stinNmList = new JList<>(listModel);
+		stinNmList.setFont(new Font("굴림", Font.PLAIN, 15));
 		stinNmList.setBackground(new Color(255, 255, 255));
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 10, 475, 546);

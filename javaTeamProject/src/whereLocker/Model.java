@@ -31,14 +31,14 @@ public class Model {
 		this.naverMaps = new NaverMaps(); 	
 		this.excelData = new ExcelData();
 	}
-	public List<ConnectLocker.ItemData> getLock(String railcd, String lncd, String stincd) throws IOException, ParseException {
+	public List<ConnectLocker.LockerData> getLock(String railcd, String lncd, String stincd) throws IOException, ParseException {
 		return connectLocker.loadLock(lncd, railcd, stincd);
 	}
 	
-	public List<ConnectAtm.ItemData> getAtm(String railcd, String lncd, String stincd) throws IOException, ParseException {
+	public List<ConnectAtm.AtmData> getAtm(String railcd, String lncd, String stincd) throws IOException, ParseException {
 		return connectAtm.loadAtmInfo(railcd, lncd, stincd);
 	}
-	public List<ConnectToil.ItemData> getToil(String railcd, String lncd, String stincd) throws IOException, ParseException {
+	public List<ConnectToil.ToilData> getToil(String railcd, String lncd, String stincd) throws IOException, ParseException {
 		return connectToil.loadToil(railcd, lncd, stincd);
 	}
 	public void setLoc(String railcd, String lncd, String stincd,String stinNm) throws IOException, ParseException {

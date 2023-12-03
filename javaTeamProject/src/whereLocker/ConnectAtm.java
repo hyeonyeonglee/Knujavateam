@@ -13,21 +13,21 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import whereLocker.ConnectLocker.ItemData;
+
 public class ConnectAtm {
-	class ItemData{
+	class AtmData{
 		String num;
 		String dtloc;
 		String utlPsbHr;
 		String grndDvNm;
-		public ItemData(String num,String dtloc, String utlPsbHr, String grndDvNm) {
+		public AtmData(String num,String dtloc, String utlPsbHr, String grndDvNm) {
 			this.num = num;
 			this.dtloc = dtloc;
 			this.utlPsbHr = utlPsbHr;
 			this.grndDvNm = grndDvNm;
 		}
 	}
-	public List<ItemData> loadAtmInfo(String railcd ,String lncd, String stincd)throws IOException, ParseException {
+	public List<AtmData> loadAtmInfo(String railcd ,String lncd, String stincd)throws IOException, ParseException {
 		StringBuilder urlBuilder = new StringBuilder("https://openapi.kric.go.kr/openapi/convenientInfo/stationATM");
 		 urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=$2a$10$mE4jdGOHE.fzyA8Qw8PSwOQjdMe/TduCDXvhuaZoPwBeHTbr3T1gK"); /*Service Key*/
 	        urlBuilder.append("&" + URLEncoder.encode("format","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));  
@@ -61,7 +61,7 @@ public class ConnectAtm {
 		JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject = (JSONObject)jsonParser.parse(sb.toString());
         JSONArray array = (JSONArray) jsonObject.get("body");
-        List<ItemData> itemDataList = new ArrayList();
+        List<AtmData> itemDataList = new ArrayList();
         if (array == null) {
             System.out.println("Atm 없음");
         } else {
@@ -76,7 +76,7 @@ public class ConnectAtm {
       	      String dtloc = (String)object.get("dtlLoc");
       	      String utlPsbHr = (String)object.get("utlPsbHr");
       	      String grndDvnm = (String)object.get("grndDvNm");
-      	      ItemData itemData = new ItemData(num,dtloc,utlPsbHr, grndDvnm);
+      	      AtmData itemData = new AtmData(num,dtloc,utlPsbHr, grndDvnm);
       	      itemDataList.add(itemData);
       	      
       	      }

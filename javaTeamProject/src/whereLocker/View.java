@@ -98,6 +98,7 @@ public class View extends JFrame {
 		
 		
 		textAreaLocker = new JTextArea();
+		textAreaLocker.setFont(new Font("굴림", Font.PLAIN, 16));
 		scrollPane.setViewportView(textAreaLocker);
 		textAreaLocker.setEditable(false);
 		
@@ -106,6 +107,7 @@ public class View extends JFrame {
 		panel.add(scrollPane_1);
 		
 		textAreaToil = new JTextArea();
+		textAreaToil.setFont(new Font("굴림", Font.PLAIN, 16));
 		scrollPane_1.setViewportView(textAreaToil);
 		textAreaToil.setEditable(false);
 		
@@ -114,6 +116,7 @@ public class View extends JFrame {
 		panel.add(scrollPane_2);
 		
 		textAreaAtm = new JTextArea();
+		textAreaAtm.setFont(new Font("굴림", Font.PLAIN, 16));
 		scrollPane_2.setViewportView(textAreaAtm);
 		textAreaAtm.setEditable(false);
 		

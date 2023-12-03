@@ -16,19 +16,19 @@ import org.json.simple.parser.ParseException;
 
 
 public class ConnectToil {
-	class ItemData{
+	class ToilData{
 		String num;
 		String dtloc;
 		String gateInotDvNm;
 		String grndDvNm;
-		public ItemData(String num,String dtloc, String gateInotDvNm, String grndDvNm) {
+		public ToilData(String num,String dtloc, String gateInotDvNm, String grndDvNm) {
 			this.num = num;
 			this.dtloc = dtloc;
 			this.gateInotDvNm = gateInotDvNm;
 			this.grndDvNm = grndDvNm;
 		}
 	}
-	public List<ItemData> loadToil(String railCd, String lnCd, String stinCd)throws IOException, ParseException{
+	public List<ToilData> loadToil(String railCd, String lnCd, String stinCd)throws IOException, ParseException{
 		 StringBuilder urlBuilder = new StringBuilder("https://openapi.kric.go.kr/openapi/convenientInfo/stationToilet");
 		 urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=$2a$10$BZRlkGiNJl1q//99Q6B5B.rkjevl6cCQJsTj7KVB1KH9wskgWZ51m"); /*Service Key*/
 	        urlBuilder.append("&" + URLEncoder.encode("format","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));  
@@ -62,7 +62,7 @@ public class ConnectToil {
 	     //**         
 	      //배열 추출
 	      JSONArray array = (JSONArray) jsonObject.get("body");
-	      List<ItemData> itemDataList = new ArrayList();
+	      List<ToilData> itemDataList = new ArrayList();
 	      if(array == null) {
 	    	  System.out.println("화장실 없음");
 	      }
@@ -78,7 +78,7 @@ public class ConnectToil {
   	      String dtloc = (String)object.get("dtlLoc");
   	      String gateInotDvNm = (String)object.get("gateInotDvNm");
   	      String grndDvnm = (String)object.get("grndDvNm");
-  	      ItemData itemData = new ItemData(num,dtloc,gateInotDvNm, grndDvnm);
+  	      ToilData itemData = new ToilData(num,dtloc,gateInotDvNm, grndDvnm);
   	      itemDataList.add(itemData);
 	      }
 	      }

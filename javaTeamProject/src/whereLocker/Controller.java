@@ -58,13 +58,13 @@ public void setTextArea() throws IOException, ParseException {
 	view.clearTextArea(view.textAreaToil);
 	view.clearTextArea(view.textAreaAtm);
 	
-	List<ConnectLocker.ItemData> lockerData =model.getLock(railcd,lncd,stincd);
+	List<ConnectLocker.LockerData> lockerData =model.getLock(railcd,lncd,stincd);
 	if(lockerData.size()== 0) {
 		String lockerInfo ="물품보관함 없음";
 		view.setTextArea(view.textAreaLocker, lockerInfo);
 	}
 	else {
-    for (ConnectLocker.ItemData itemData : lockerData) {
+    for (ConnectLocker.LockerData itemData : lockerData) {
         // Customize how you want to display the data in the JTextArea
         String lockerInfo = itemData.num+"\n"
         		+"상세위치: " + itemData.dtloc + "\n"
@@ -74,13 +74,13 @@ public void setTextArea() throws IOException, ParseException {
         view.setTextArea(view.textAreaLocker, lockerInfo);
     }
 	}
-    List<ConnectToil.ItemData>  toilData = model.getToil(railcd, lncd, stincd);
+    List<ConnectToil.ToilData>  toilData = model.getToil(railcd, lncd, stincd);
     if(toilData.size()==0) {
 		String lockerInfo ="화장실 없음";
 		view.setTextArea(view.textAreaToil, lockerInfo);
 	}
     else {
-    for (ConnectToil.ItemData itemData : toilData) {
+    for (ConnectToil.ToilData itemData : toilData) {
         
         String lockerInfo = itemData.num+"\n"
         		+"상세위치: " + itemData.dtloc + "\n"
@@ -90,13 +90,13 @@ public void setTextArea() throws IOException, ParseException {
         view.setTextArea(view.textAreaToil, lockerInfo);
     }
     }
-    List<ConnectAtm.ItemData>  atmData = model.getAtm(railcd, lncd, stincd);
+    List<ConnectAtm.AtmData>  atmData = model.getAtm(railcd, lncd, stincd);
     if(atmData.size()==0) {
 		String lockerInfo ="Atm기기 없음";
 		view.setTextArea(view.textAreaAtm, lockerInfo);
 	}
     else {
-    for (ConnectAtm.ItemData itemData : atmData) {
+    for (ConnectAtm.AtmData itemData : atmData) {
         // Customize how you want to display the data in the JTextArea
         String lockerInfo = itemData.num+"\n"
         		+"상세위치: " + itemData.dtloc + "\n"
