@@ -12,7 +12,7 @@ public class Controller  {
 	
 private Model model = new Model();
 private View view = new View();
-private ViewList viewList = new ViewList();
+private SearchList searchList = new SearchList();
 String railcd, lncd, stincd;
 
 public void setCode(String railcd, String lncd, String stincd) {
@@ -25,9 +25,9 @@ public void setCode(String railcd, String lncd, String stincd) {
 public void handleSearchButtonClick(String searchText) throws Exception {
 	model.setSearch(searchText);
 	model.setCode();
-	viewList.setController(this);
-	viewList.refreshList(model.getStinNm(),model.getLnNm());
-	viewList.setVisible(true);
+	searchList.setController(this);
+	searchList.refreshList(model.getStinNm(),model.getLnNm());
+	searchList.setVisible(true);
 
 	
 	
