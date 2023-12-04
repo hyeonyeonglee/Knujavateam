@@ -47,6 +47,7 @@ public class View extends JFrame {
 	private JLabel label3;
 	private JLabel label4;
 	private JLabel label5;
+	private JButton btnSearch_1;
 	
 
 	
@@ -154,6 +155,23 @@ public class View extends JFrame {
 		label5.setFont(new Font("굴림", Font.PLAIN, 16));
 		label5.setBounds(12, 365, 198, 24);
 		panel.add(label5);
+		
+		btnSearch_1 = new JButton("가까운역 찾기");
+		btnSearch_1.setToolTipText("");
+		btnSearch_1.setFont(new Font("굴림", Font.BOLD, 15));
+		btnSearch_1.setBounds(473, 10, 141, 41);
+		panel.add(btnSearch_1);
+		btnSearch_1.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					controller.handleCloseClick();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 	}
 	public String getSearch() {
 		return txtSearch.getText();
@@ -170,11 +188,13 @@ public class View extends JFrame {
 	public void setIcon(ImageIcon image) {
 		imageicon.setIcon(image);
 	}
-
+	public void setSrcTxt(String txt) {
+		txtSearch.setText(txt);
+	}
 }
 class SearchList extends JFrame {
 
-	private static final long serialVersionUID = 1L;
+	
 	private JPanel contentPane;
 	private Model model;
 	private JList<String> stinNmList;
@@ -217,9 +237,7 @@ class SearchList extends JFrame {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-				}
-				
-				
+				}								
 			}
 		});
 		
@@ -229,6 +247,7 @@ class SearchList extends JFrame {
 		        listModel.clear();
 		        ArrayList<String> stinNmData = stinNm;
 		        ArrayList<String> lnNmData = lnNm;
+		        
 		        for (int i = 0; i < stinNmData.size(); i++) {
 		            String item = stinNmData.get(i) + " " + lnNmData.get(i);
 		            listModel.addElement(item);

@@ -60,19 +60,15 @@ public class ConnectLocker {
 
 	      //JSON데이터를 넣어 JSON Object 로 만들어 준다.
 	      JSONObject jsonObject = (JSONObject)jsonParser.parse(sb.toString());
-	      
 	              
 	      //배열 추출
 	      JSONArray array = (JSONArray) jsonObject.get("body");
-	      if(array == null) {
-	    	  System.out.println("물품보관함 없음");
-	      }
-	      else {
+	      if (array == null) {
+	            System.out.println("물품보관함 없음");
+	        } else {
+	      
 	      for(int i=0; i<array.size(); i++){
-	        	 
-	    	    System.out.println("물품보관함"+(i+1)+" ===========================================");
-	    	             
-	    	
+	        	 	    	
 	      JSONObject object = (JSONObject) array.get(i);
 	      String num = "물품보관함"+(i+1);
 	      String dtloc = (String)object.get("dtlLoc");
@@ -89,8 +85,9 @@ public class ConnectLocker {
 	      itemDataList.add(itemData);
 	      
 	      }
+	        }
 	      
-	      }
+	      
 	      return itemDataList;
 	}
 	

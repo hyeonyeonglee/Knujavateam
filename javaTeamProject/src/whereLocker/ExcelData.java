@@ -73,6 +73,31 @@ public class ExcelData {
         }
         
     }
+    public void getAllCode() throws Exception{
+    	   railcd.clear();
+   	    lncd.clear();
+   	    stincd.clear();
+   	    stinNm.clear();
+   	    lnNm.clear();
+       ArrayList<Integer> cellrow = new ArrayList<>();
+       Workbook workbook = new Workbook("C:\\Users\\gusdu\\eclipse-workspace\\javaTeamProject\\운영기관_역사_코드정보_2023.09.26.xlsx");  //엑셀위치에 따라 수정
+       Worksheet worksheet = workbook.getWorksheets().get(0);
+       Cells cells = worksheet.getCells();
+       FindOptions findOptions = new FindOptions();
+       findOptions.setLookAtType(LookAtType.CONTAINS);
+       int row = worksheet.getCells().getMaxDataRow();
+       for (int i = 1; i <= row; i++) {
+              railcd.add((String) worksheet.getCells().get(i, 0).getValue());
+              lncd.add((String) worksheet.getCells().get(i, 2).getValue());
+              lnNm.add((String) worksheet.getCells().get(i, 3).getValue());
+              stincd.add((String) worksheet.getCells().get(i, 4).getValue());
+              stinNm.add((String) worksheet.getCells().get(i, 5).getValue());
+
+       }
+
+
+    	
+    }
     
 
 

@@ -15,12 +15,6 @@ private View view = new View();
 private SearchList searchList = new SearchList();
 String railcd, lncd, stincd;
 
-public void setCode(String railcd, String lncd, String stincd) {
-	this.railcd = railcd;
-	this.lncd = lncd;
-	this.stincd = stincd;
-	
-}
 
 public void handleSearchButtonClick(String searchText) throws Exception {
 	model.setSearch(searchText);
@@ -29,8 +23,6 @@ public void handleSearchButtonClick(String searchText) throws Exception {
 	searchList.refreshList(model.getStinNm(),model.getLnNm());
 	searchList.setVisible(true);
 
-	
-	
 }
 public void handleListClick(int index) throws IOException, ParseException {
 	setParameter(index);
@@ -39,9 +31,17 @@ public void handleListClick(int index) throws IOException, ParseException {
 	showMaps();
 	test();
 }
+public void handleCloseClick() throws Exception {
+	model.setAllCode();
+	int idx =model.cpDistance();
+	setParameter(idx);
+	model.setLoc(railcd, lncd, stincd, model.getStinNm(idx));
+	view.setSrcTxt(model.getStinNm(idx));
+	setTextArea();
+	showMaps();
+}
 
 public void setParameter(int index) {
-	System.out.println("setParameter method is called");
 	railcd = model.getrailCd(index);
 	lncd = model.getlnCd(index);
 	stincd = model.getStinCd(index);
@@ -65,7 +65,6 @@ public void setTextArea() throws IOException, ParseException {
 	}
 	else {
     for (ConnectLocker.LockerData itemData : lockerData) {
-        // Customize how you want to display the data in the JTextArea
         String lockerInfo = itemData.num+"\n"
         		+"상세위치: " + itemData.dtloc + "\n"
                 + "이용요금: " + itemData.utlFare + "\n"
@@ -107,6 +106,7 @@ public void setTextArea() throws IOException, ParseException {
     }
     }
 }
+
 
 public void setModel(Model model) {
 	this.model = model;
